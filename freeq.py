@@ -10,7 +10,7 @@ from collections import Counter
 __all__ = ['WordFinder', 'Book']
 
 lemmas = {}
-with open('lemmas.txt') as fin:
+with open('lemmas.txt', encoding='utf-8') as fin:
     for line in fin:
         line = line.strip()
         headword = line.split('\t')[0]
@@ -124,7 +124,7 @@ def list_dedup(list_object):
 
 class Book(object):
     def __init__(self, filepath):
-        with open(filepath) as bookfile:
+        with open(filepath, encoding='utf-8') as bookfile:
             content = bookfile.read().lower()
             self.temp_list = re.split(r'\b([a-zA-Z-]+)\b', content)
             self.temp_list = [item for item in self.temp_list if not is_dirt(item)]
